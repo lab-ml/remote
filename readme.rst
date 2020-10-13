@@ -2,6 +2,7 @@ Run Python on a remote computer
 ===============================
 
 .. code-block:: console
+
     pip install labml_remote
     cd [PATH TO YOUR PROJECT FOLDER]
     labml_remote --init
@@ -14,6 +15,7 @@ and ``.remote/exclude.txt``.
 Here's a sample ``.remote/configs.yaml``:
 
 .. code-block:: yaml
+
     hostname: ec2-18-219-46-175.us-east-2.compute.amazonaws.com
     name: labml_samples
     private_key: .remote/private_key
