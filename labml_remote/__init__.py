@@ -120,7 +120,7 @@ def rsync_project():
     if conf.password is not None or conf.private_key_file is None:
         raise NotImplementedError('TODO: Not implemented to handle connections with password')
     rsync_cmd += ['-e']
-    rsync_cmd += [f'"ssh -i {conf.private_key_file}"']
+    rsync_cmd += [f'"ssh -o StrictHostKeyChecking=no -i {conf.private_key_file}"']
     if exclude_path.exists():
         rsync_cmd += [f"--exclude-from='{str(exclude_path)}'"]
     rsync_cmd += ['./']  # source
