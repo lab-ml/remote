@@ -86,7 +86,8 @@ def init_project():
                     'logs',
                     '.DS_Store',
                     '.*.swp',
-                    '*.egg-info/'
+                    '*.egg-info/',
+                    '.idea'
                 ]))
 
     logger.log(["We have created a standard configurations file and"
