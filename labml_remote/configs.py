@@ -1,3 +1,5 @@
+import os
+import stat
 from pathlib import Path
 from typing import Optional, Dict
 
@@ -24,6 +26,7 @@ class Configs:
             if path.exists():
                 self.private_key_file = path.absolute()
         if self.private_key_file is not None:
+            os.chmod(str(self.private_key_file), stat.S_IRUSR | stat.S_IWUSR)
             self.private_key = paramiko.RSAKey.from_private_key_file(self.private_key_file)
         else:
             self.private_key = None
