@@ -5,7 +5,7 @@ with open("readme.rst", "r") as f:
 
 setuptools.setup(
     name='labml_remote',
-    version='0.0.1',
+    version='0.0.2',
     author="Varuna Jayasiri",
     author_email="vpjayasiri@gmail.com",
     description="Run python code on remote servers",
@@ -17,6 +17,7 @@ setuptools.setup(
     },
     packages=setuptools.find_packages(exclude=('test',
                                                'test.*')),
+    include_package_data=True,
     install_requires=['paramiko',
                       'pyyaml>=5.3.1',
                       'scp'],
