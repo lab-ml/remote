@@ -116,7 +116,7 @@ def rsync_project():
 
     exclude_path = Path('.') / '.remote' / 'exclude.txt'
     exclude_path = exclude_path.absolute()
-    rsync_cmd = ['rsync', '-ravuKLt', '--perms', '--executability']
+    rsync_cmd = ['rsync', '-zravuKLt', '--perms', '--executability']
     if conf.password is not None or conf.private_key_file is None:
         raise NotImplementedError('TODO: Not implemented to handle connections with password')
     rsync_cmd += ['-e']
