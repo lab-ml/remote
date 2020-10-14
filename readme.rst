@@ -44,4 +44,11 @@ Then it installs packages from ``requirements.txt`` or from *pipenv* if a ``Pipf
 Then it runs your python file. It will use *pipenv* if a ``Pipfile`` is present.
 The outputs of your program will be streamed to the console.
 
+What it doesn't do
+------------------
+
+This won't install things like drivers or CUDA. So if you need them you should pick an
+image that comes with those for your instance. For example, on AWS pick a deep learning
+AMI if you want to use an instance with GPUs.
+
 Hope this helps!
