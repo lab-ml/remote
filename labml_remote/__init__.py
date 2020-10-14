@@ -164,8 +164,7 @@ def run_command(client: SSHClient, home_path: str, command: List[str]):
     script = template(conf.scripts_folder / 'run.sh', {
         'name': conf.name,
         'home': home_path,
-        'has_pipfile': str(pipfile.exists()),
-        'has_requirements': str(requirements.exists()),
+        'use_pipenv': str(pipfile.exists()),
         'run_command': ' '.join(command)
     })
 

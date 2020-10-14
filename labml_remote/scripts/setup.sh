@@ -14,12 +14,12 @@ readonly CONDA_ENV="${NAME}_env"
 # 31 red 32 green 33 yellow 34 blue
 
 check_conda() {
-  printf "Checking conda..."
+  printf "Checking conda...\n"
   if test -d "${CONDA_PATH}"; then
-    printf " \x1B[0;32m[FOUND]\x1B[0m\n"
+    printf "Checking conda... \x1B[0;32m[FOUND]\x1B[0m\n"
     return 0
   else
-    printf " \x1B[0;33m[NOT FOUND]\x1B[0m\n"
+    printf "Checking conda... \x1B[0;33m[NOT FOUND]\x1B[0m\n"
     return 1
   fi
 }
@@ -30,36 +30,36 @@ install_conda() {
     return 0
   fi
 
-  printf "Downloading conda..."
+  printf "Downloading conda...\n"
   wget --progress=bar:force "${CONDA_DOWNLOAD}" -O "${HOME}/miniconda.sh"
   if [ "$?" != 0 ]; then
-    printf " \x1B[0;31m[DOWNLOAD FAILED]\x1B[0m\n"
+    printf "Downloading conda... \x1B[0;31m[DOWNLOAD FAILED]\x1B[0m\n"
     return 1
   else
-    printf " \x1B[0;32m[DOWNLOADED]\x1B[0m\n"
+    printf "Downloading conda... \x1B[0;32m[DOWNLOADED]\x1B[0m\n"
   fi
-  printf "Installing conda..."
+  printf "Installing conda...\n"
   bash "${HOME}/miniconda.sh" -b -p "${CONDA_PATH}"
   if [ "$?" != 0 ]; then
-    printf " \x1B[0;31m[INSTALL FAILED]\x1B[0m\n"
+    printf "Installing conda... \x1B[0;31m[INSTALL FAILED]\x1B[0m\n"
     rm "${HOME}/miniconda.sh"
     rm -rf "${CONDA_PATH}"
     return 1
   else
-    printf " \x1B[0;32m[INSTALLED]\x1B[0m\n"
+    printf "Installing conda... \x1B[0;32m[INSTALLED]\x1B[0m\n"
   fi
 
   rm "${HOME}/miniconda.sh"
 }
 
 check_environment() {
-  printf "Checking environment..."
+  printf "Checking environment...\n"
   conda activate "${CONDA_ENV}"
   if [ $? == 0 ]; then
-    printf " \x1B[0;32m[FOUND]\x1B[0m\n"
+    printf "Checking environment... \x1B[0;32m[FOUND]\x1B[0m\n"
     return 0
   else
-    printf " \x1B[0;33m[NOT FOUND]\x1B[0m\n"
+    printf "Checking environment... \x1B[0;33m[NOT FOUND]\x1B[0m\n"
     return 1
   fi
 }
@@ -72,9 +72,10 @@ create_environment() {
     return 0
   fi
 
-  printf "Setting up conda environment..."
+  printf "Creating conda environment...\n"
   conda create -y -n "${CONDA_ENV}" "python=${PYTHON_VERSION}"
   if [ "$?" != 0 ]; then
+    printf "Creating conda environment... \x1B[0;33m[FAILED]\x1B[0m\n"
     return 1
   fi
 
@@ -86,7 +87,8 @@ create_environment() {
   if [ "$?" != 0 ]; then
     return 1
   fi
-  printf " \x1B[0;32m[DONE]\x1B[0m\n"
+
+  printf "Creating conda environment... \x1B[0;32m[DONE]\x1B[0m\n"
 
   return 0
 }

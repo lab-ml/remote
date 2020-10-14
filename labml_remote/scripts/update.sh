@@ -18,13 +18,13 @@ update_pipenv() {
     return 0
   fi
 
-  printf "Updating pipenv..."
+  printf "Updating pipenv...\n"
   pipenv install
   if [ "$?" == 0 ]; then
-    printf " \x1B[0;32m[DONE]\x1B[0m\n"
+    printf "Updating pipenv... \x1B[0;32m[DONE]\x1B[0m\n"
     return 0
   else
-    printf " \x1B[0;31m[FAILED]\x1B[0m\n"
+    printf "Updating pipenv... \x1B[0;31m[FAILED]\x1B[0m\n"
     return 1
   fi
 }
@@ -34,13 +34,13 @@ update_requirements() {
     return 0
   fi
 
-  printf "Updating pip..."
+  printf "Updating pip...\n"
   pip install -r requirements.txt
   if [ "$?" == 0 ]; then
-    printf " \x1B[0;32m[DONE]\x1B[0m\n"
+    printf "Updating pip... \x1B[0;32m[DONE]\x1B[0m\n"
     return 0
   else
-    printf " \x1B[0;31m[FAILED]\x1B[0m\n"
+    printf "Updating pip... \x1B[0;31m[FAILED]\x1B[0m\n"
     return 1
   fi
 }
