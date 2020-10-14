@@ -21,10 +21,6 @@ class Configs:
         self.username = configs.get('username', 'ubuntu')
         self.password = configs.get('password', None)
         self.private_key_file = configs.get('private_key', None)
-        if self.private_key_file is None:
-            path = Path('.') / '.remote' / 'private_key'
-            if path.exists():
-                self.private_key_file = path.absolute()
         if self.private_key_file is not None:
             os.chmod(str(self.private_key_file), stat.S_IRUSR | stat.S_IWUSR)
             self.private_key = paramiko.RSAKey.from_private_key_file(self.private_key_file)

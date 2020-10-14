@@ -67,9 +67,10 @@ def init_project():
             configs['username'] = input("Username of the remote computer (ubuntu): ").strip()
             if configs['username'] == '':
                 configs['username'] = 'ubuntu'
-            configs['private_key'] = input("Path to the private key file (.remote/private_key): ").strip()
+            configs['private_key'] = input("Path to the private key file:\n"
+                                           "(leave blank if you've setup authorized keys)\n").strip()
             if configs['private_key'] == '':
-                configs['private_key'] = '.remote/private_key'
+                del configs['private_key']
 
             with open(str(configs_file), 'w') as f:
                 f.write(yaml.dump(configs, default_flow_style=False))

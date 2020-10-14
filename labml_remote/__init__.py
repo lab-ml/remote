@@ -117,16 +117,14 @@ def rsync_project():
     exclude_path = Path('.') / '.remote' / 'exclude.txt'
     exclude_path = exclude_path.absolute()
     rsync_cmd = ['rsync', '-zravuKLt', '--perms', '--executability']
-    if conf.password is not None or conf.private_key_file is None:
-        raise NotImplementedError('TODO: Not implemented to handle connections with password')
-    rsync_cmd += ['-e']
-    rsync_cmd += [f'"ssh -o StrictHostKeyChecking=no -i {conf.private_key_file}"']
+    if conf.private_key_file is not None:
+        rsync_cmd += ['-e']
+        rsync_cmd += [f'"ssh -o StrictHostKeyChecking=no -i {conf.private_key_file}"']
     if exclude_path.exists():
         rsync_cmd += [f"--exclude-from='{str(exclude_path)}'"]
     rsync_cmd += ['./']  # source
     rsync_cmd += [f'{conf.username}@{conf.hostname}:~/{conf.name}/']  # destination
 
-    # print(' '.join(rsync_cmd))
     try:
         process = subprocess.run(' '.join(rsync_cmd), shell=True)
     except FileNotFoundError as e:
