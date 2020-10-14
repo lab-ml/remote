@@ -39,6 +39,10 @@ def execute_stream(client: SSHClient, command: str, *, is_silent=True):
                 sys.stderr.write(channel.recv_stderr(1024).decode('utf-8'))
             if channel.exit_status_ready():
                 break
+        while channel.recv_ready():
+            sys.stdout.write(channel.recv(1024).decode('utf-8'))
+        while channel.recv_stderr_ready():
+            sys.stderr.write(channel.recv_stderr(1024).decode('utf-8'))
         exit_code = channel.recv_exit_status()
 
         if exit_code != 0:
