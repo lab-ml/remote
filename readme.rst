@@ -1,3 +1,12 @@
+.. image:: https://badge.fury.io/py/labml_remote.svg
+	   :target: https://badge.fury.io/py/labml_remote
+.. image:: https://pepy.tech/badge/labml_remote
+	   :target: https://pepy.tech/project/labml_remote
+.. image:: https://img.shields.io/badge/slack-chat-green.svg?logo=slack
+	   :target: https://join.slack.com/t/labforml/shared_invite/zt-egj9zvq9-Dl3hhZqobexgT7aVKnD14g/
+.. image:: https://img.shields.io/badge/labml-docs-blue
+	   :target: http://lab-ml.com/
+
 Run Python on a remote computer
 ===============================
 
