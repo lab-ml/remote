@@ -10,7 +10,7 @@ We use [terminator](https://terminator-gtk3.readthedocs.io/en/latest/) as the te
 and [oh-my-zsh](https://ohmyz.sh/) with [powerlevel10k theme](https://github.com/romkatv/powerlevel10k).
 It gives indicators about the git branch, uncommitted changes, and conda environment on the shell.
 
-![powerlevel10k.png]
+![Z Shell](powerlevel10k.png)
 
 Here's the setup procedure, up to installing PyTorch/Tensorflow.
 This takes about an hour depending on your download speeds.
