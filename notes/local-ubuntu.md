@@ -22,7 +22,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-If you ran this on a fresh Ubuntu 20.04 installation it will have kernel upgrades and you will be required to restart the computer.
+If you ran this on a fresh Ubuntu 20.04 installation it would upgrade the kernel and you will be required to restart the computer.
 
 Install **vim** and **git**.
 
@@ -107,11 +107,11 @@ Restart terminator to see if it works.
 Meslo fonts are needed by powerlevel10k theme. You need to download and install the fonts from here:
 [https://github.com/romkatv/powerlevel10k#manual-font-installation]
 
-Next change the font in terminiator, in preferences.
+Next change the font in terminator, in preferences.
 1. Right-click on the terminator
 2. Select Preferences 
 3. Goto Profiles tab
-4. Deselect *Use the system fixed width font* 
+4. Deselect *Use the system fixed-width font* 
 5. Choose font MesloLGS Regular
 
 Clone powerlevel10k into oh-my-zsh themes folder.
@@ -165,7 +165,7 @@ Let's create an environment for our PyTorch work, and name it `myenv`.
 conda create -n myenv "python=3.8"
 ```
 
-If you add the option `-y`  it won't ask for confirmations.
+If you add the option `-y`  it won't ask for confirmation.
 
 Activate our new conda environment.
 
@@ -194,7 +194,7 @@ Run `ipython` and try the following,
 >>> torch.cuda.device_count()
 ```
 
-We install *Tensorboard* if seprately if we don't install Tensorflow.
+We install *Tensorboard* if seperately if we don't install Tensorflow.
 
 ```bash
 pip install tensorboard
