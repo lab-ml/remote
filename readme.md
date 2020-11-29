@@ -2,6 +2,8 @@
 [![PyPI Status](https://pepy.tech/badge/labml_remote)](https://pepy.tech/project/labml_remote)
 [![PyPI Status](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://join.slack.com/t/labforml/shared_invite/zt-egj9zvq9-Dl3hhZqobexgT7aVKnD14g/)
 
+# 🕹 LabML Remote
+
 ![labml_remote job-list](https://github.com/lab-ml/remote/raw/master/notes/ddp-job-list.png)
 
 `labml_remote` is a very simple tool that lets you setup python and run python on remote computers.
