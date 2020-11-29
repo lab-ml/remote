@@ -2,14 +2,18 @@
 [![PyPI Status](https://pepy.tech/badge/labml_remote)](https://pepy.tech/project/labml_remote)
 [![PyPI Status](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://join.slack.com/t/labforml/shared_invite/zt-egj9zvq9-Dl3hhZqobexgT7aVKnD14g/)
 
+![labml_remote job-list](https://github.com/lab-ml/remote/raw/master/notes/ddp-job-list.png)
+
 `labml_remote` is a very simple tool that lets you setup python and run python on remote computers.
 It's mainly intended for deep learning training.
 It doesn't use layers and technologies such as docker, terraform or slurm.
 It simply SSH's into the remote computers and run commands, and jobs with `nohup`,
  and synchronises using rsync.
-`labml_remote` comes with a easy-to-use CLI. You can also use the API to launch 
+ 
+`labml_remote` comes with a easy-to-use **Commandline Interface**.
+You can also use the API to launch 
 customized distributed training sessions.
-[Here is a sample](https://github.com/lab-ml/remote).
+[Here is a sample](https://github.com/lab-ml/remote/blob/master/sample/api_sample.py).
 
 ## Install from PIP
 
@@ -137,5 +141,3 @@ files on the server which are synchronized back to the local computer using *rsy
 This won't install things like drivers or CUDA. So if you need them you should pick an
 image that comes with those for your instance. For example, on AWS pick a deep learning
 AMI if you want to use an instance with GPUs.
-
-Hope this helps!
