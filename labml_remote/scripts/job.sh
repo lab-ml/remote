@@ -3,7 +3,7 @@
 # Configurations
 readonly NAME="%%NAME%%"
 readonly HOME='%%HOME%%'
-readonly USE_PIPENV='%%USE_PIPENV%%'
+readonly JOB_ID='%%JOB_ID%%'
 
 readonly PROJECT_PATH="${HOME}/${NAME}"
 readonly CONDA_PATH="${HOME}/miniconda"
@@ -31,11 +31,16 @@ run_python() {
 
   export PYTHONPATH="${PYTHONPATH}:$(pwd):$(pwd)/src"
 
-  if [ "${USE_PIPENV}" == "True" ]; then
-    pipenv run %%RUN_COMMAND%%
-  else
-    %%RUN_COMMAND%%
+  if [ ! -d ".jobs" ]; then
+    mkdir .jobs
   fi
+
+  mkdir ".jobs/${JOB_ID}"
+
+  nohup %%RUN_COMMAND%% > ".jobs/${JOB_ID}/job.out" 2> ".jobs/${JOB_ID}/job.err" &
+  local pid=$!
+  echo $pid > ".jobs/${JOB_ID}/job.pid"
+  echo $pid
 
   if [ "$?" != 0 ]; then
     return 1

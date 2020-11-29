@@ -81,10 +81,19 @@ create_environment() {
 
   conda activate "${CONDA_ENV}"
   if [ "$?" != 0 ]; then
+    printf "Activating conda environment... \x1B[0;33m[FAILED]\x1B[0m\n"
     return 1
   fi
+
   pip install pipenv
   if [ "$?" != 0 ]; then
+    printf "Installing pipenv... \x1B[0;33m[FAILED]\x1B[0m\n"
+    return 1
+  fi
+
+  pip install psutil
+  if [ "$?" != 0 ]; then
+    printf "Installing psutil... \x1B[0;33m[FAILED]\x1B[0m\n"
     return 1
   fi
 
@@ -93,5 +102,36 @@ create_environment() {
   return 0
 }
 
-install_conda
-create_environment
+install_utils() {
+  sudo apt-get update
+  if [ "$?" != 0 ]; then
+    printf "APT update... \x1B[0;33m[FAILED]\x1B[0m\n"
+    return 1
+  fi
+  sudo apt-get --assume-yes install gcc python3-dev
+  if [ "$?" != 0 ]; then
+    printf "Installing gcc python3-dev... \x1B[0;33m[FAILED]\x1B[0m\n"
+    return 1
+  fi
+
+  return 0
+}
+
+main() {
+  install_conda
+  if [ "$?" != 0 ]; then
+    return 1
+  fi
+  install_utils
+  if [ "$?" != 0 ]; then
+    return 1
+  fi
+  create_environment
+  if [ "$?" != 0 ]; then
+    return 1
+  fi
+
+  return 0
+}
+
+main

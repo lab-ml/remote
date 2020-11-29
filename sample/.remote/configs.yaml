@@ -1,0 +1,21 @@
+# Name of the project
+name: sample_project
+
+# Define a dictionary of servers
+servers:
+  # Key of the dictionary is the name of the server
+  primary:
+    # Hostname/IP of the  server
+    hostname: 3.19.32.53
+    # Path to the private key
+    private_key: ./.remote/private_key
+    # Username
+    username: ubuntu
+  # Key of the dictionary is the name of the server
+  second:
+    # Hostname/IP of the  server
+    hostname: 3.19.32.54
+    # Username
+    username: ubuntu
+    # Password
+    password: ubuntu
