@@ -1,33 +1,33 @@
 # Running PyTorch Data Distributed Parallel training on remote computers
 
-[LabML Remote](https://github.com/lab-ml/remote) run jobs on remote servers
-through an SSH connection and synchronises
-the outputs back to your local computer.
-The project [readme](https://github.com/lab-ml/remote/blob/master/readme.md)
+[LabML Remote](https://github.com/lab-ml/remote) runs jobs on remote servers
+through a SSH connection and synchronises
+the logs back to the local computer.
+The [project readme](https://github.com/lab-ml/remote/blob/master/readme.md)
 gives a good overview of the project,
-and this is a guide on running distributed PyTorch model training on remote computers,
-with a few command lines instructions.
+and this is a guide on running distributed PyTorch model training on remote computers.
 
-First, you need to install [LabML Remote](https://github.com/lab-ml/remote) with pip.
+### Install [LabML Remote](https://github.com/lab-ml/remote) with pip.
 
 ```bash
 pip install labml-remote
 ```
 
-Next, you need to add server information to [LabML Remote](https://github.com/lab-ml/remote)
- configurations. This is the hardest step.
+### ⚙️ Add server information to configurations
+
+It is basically a YAML file with a list of servers you have,
+and this is the hardest step.
 
 ```
 cd [YOUR PROJECT]
 labml_remote init
 ```
 
-This will create a sample configuration file `.remote/configs.yaml` and `.remote/exclude.txt`.
+This will create a sample configuration file `[PROJECT]/.remote/configs.yaml` and `[PROJECT]/.remote/exclude.txt`.
 Edit `configs.yaml` with the server information.
 Here is a simple example,
-and look at this [sample](https://github.com/lab-ml/remote/blob/master/sample/.remote/configs.yaml),
+and look at [this sample](https://github.com/lab-ml/remote/blob/master/sample/.remote/configs.yaml),
 for a slightly more complex configuration file.
-It is basically a list of servers you have.
 
 ```yaml
 name: my_project
@@ -39,10 +39,10 @@ servers:
 ```
 
 `exclude.txt` is a list of files and folders to be excluded from syncing.
-That is files/folders that should not be send to the servers.
+That is, files/folders that should not be send to the servers.
 Here is a [sample](https://github.com/lab-ml/remote/blob/master/sample/.remote/exclude.txt) for that.
 
-Once this is over you can prepare the servers.
+### 🖥 Prepare the servers.
 
 ```bash
 labml_remote prepare
@@ -57,7 +57,7 @@ This command will
 
 This will usually take about a minute per server.
 
-Now we can **launch** the distributed training.
+### 🚀 Launch the distributed training.
 
 ```bash
 labml_remote helper-torch-launch --cmd 'mnist.py' --nproc-per-node 2 --env GLOO_SOCKET_IFNAME enp1s0
@@ -98,7 +98,7 @@ This will make sure the job statuses are upto date.
 
 It shows a list of running jobs, with following details:
 1. (in blue) the job key
-2. a unique ID given to job (you can find the all the logs of the job in folder `.remote/jobs/[unique ID]`
+2. a unique ID given to job (you can find the all the logs of the job in folder `[PROJECT]/.remote/jobs/[unique ID]`
 3. (in cyan) the server on which the job is running 
 4. (in pink) process ID of the job
 5. (in blue) tags - you can use tags for searching and selecting jobs
@@ -135,7 +135,7 @@ the job `11` was killed.*
 
 Run `labml-remote job-kill --help` to get help on how to kill specific jobs by job key or tags.
 
-## Python API
+## 🐍 Python API
 
 This library can also be used to launch jobs using Python.
 
@@ -147,3 +147,8 @@ labml_remote.job.JOBS.create('[SERVER NAME]', '[COMMAND]',
 
 [Here is an example](https://github.com/lab-ml/remote/blob/master/sample/api_sample.py)
  that launches a training session using a python script.
+
+## 🗒 Notes
+
+The logs of all the commands executed are stored in `[PROJECT]/.remote/logs` and the jobs 
+are stored in `[PROJECT]/.remote/jobs`.
