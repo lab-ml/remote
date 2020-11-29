@@ -35,7 +35,7 @@ servers:
   first-server:
     hostname: 3.19.32.53
   second-server:
-    hostname: 3.19.32.53
+    hostname: 3.19.32.54
 ```
 
 `exclude.txt` is a list of files and folders to be excluded from syncing.
