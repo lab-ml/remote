@@ -96,7 +96,16 @@ labml_remote run --cmd 'python my_script.py'
 
 This will execute the command on the server and stream the output of it.
 
-### Start a job
+## 👩‍🔬 Jobs
+
+Jobs are processes that are run with `nohup`.
+These can run on the remote computers in background without streaming outputs over SSH.
+The `stderr` and `stdout` of jobs will be piped to files and can be synchronized back to  the local computer using rsync.
+`labml_remote` has commands to list, watch and kill jobs.
+
+Jobs are intended to be used for tasks like model training.
+
+### Start a new job
 
 ```bash
 labml_remote job-run --cmd 'python my_script.py' --tag my-job
