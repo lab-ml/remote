@@ -20,6 +20,7 @@ setuptools.setup(
     include_package_data=True,
     install_requires=['paramiko',
                       'pyyaml>=5.3.1',
+                      'labml>=0.4.64',
                       'scp',
                       'click'],
     entry_points={
