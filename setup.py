@@ -5,7 +5,7 @@ with open("readme.md", "r") as f:
 
 setuptools.setup(
     name='labml_remote',
-    version='0.1.0',
+    version='0.1.1',
     author="Varuna Jayasiri",
     author_email="vpjayasiri@gmail.com",
     description="Run python code on remote servers",
