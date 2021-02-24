@@ -147,7 +147,7 @@ bash miniconda.sh -b -p ~/miniconda
 ```
 
 Next, we need to set conda paths on oh-my-zsh. We do this by adding an `oh-my-zsh` plugin.
-Create a file `~/.oh-my-zsh/conda.zsh` and include this in it.
+Create a file `~/.oh-my-zsh/custom/conda.zsh` and include this in it.
 
 ```bash
 source ~/miniconda/etc/profile.d/conda.sh
